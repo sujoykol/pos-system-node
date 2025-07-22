@@ -1,0 +1,7 @@
+<form method="POST" action="/suppliers/edit/<%= supplier.id %>">
+  <input type="text" name="name" value="<%= supplier.name %>" required class="form-control mb-2">
+  <input type="email" name="email" value="<%= supplier.email %>" class="form-control mb-2">
+  <input type="text" name="phone" value="<%= supplier.phone %>" class="form-control mb-2">
+  <textarea name="address" class="form-control mb-2"><%= supplier.address %></textarea>
+  <button class="btn btn-primary">Update</button>
+</form>

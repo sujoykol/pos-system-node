@@ -1,0 +1,31 @@
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Customer</th>
+      <th>Total Qty</th>
+      <th>Total Price</th>
+      <th>Date</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% orders.forEach((order, i) => { %>
+      <tr>
+        <td><%= i + 1 %></td>
+        <td><%= order.customer_name %></td>
+        <td><%= order.total_qty %></td>
+        <td>₹<%= order.total %></td>
+        <td><%= order.date %></td>
+        <td>
+          <a href="/orderview/<%= order.id %>" class="btn btn-sm btn-primary">View</a>
+          <a href="/orderpdf/<%= order.id %>/download" class="btn btn-outline-secondary">
+  🧾 Download Invoice (PDF)
+</a>
+
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

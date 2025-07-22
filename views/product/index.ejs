@@ -1,0 +1,49 @@
+<% if (success && success.length) { %>
+  <div class="alert alert-success"><%= success[0] %></div>
+<% } %>
+<a href="/products/add" class="btn btn-primary mb-3">Add Product</a>
+
+<table class="table table-bordered">
+  <thead>
+    <tr><th>ID</th><th>Name</th><th>Price</th><th>Stock</th><th>Category</th><th>Image</th><th>Actions</th></tr>
+  </thead>
+  <tbody>
+    <% let id=1; %>
+    <% products.forEach(prod => { %>
+      <tr>
+        <td><%= id++ %></td>
+        <td><%= prod.name %></td>
+        <td><%= prod.price %></td>
+        <% if (prod.stock < 5) { %>
+        <td><span class="text-danger"><%= prod.stock %> (Low)</span></td>
+        <% } else { %>
+        <td><%= prod.stock %></td>
+        <% } %>
+        <td><%= prod.category_name %></td>
+        <td>
+  <% if (prod.image) { %>
+    <img src="/uploads/products/<%= prod.image %>" alt="Product" width="50">
+    
+  <% } else { %>
+    <img src="/uploads/products/no-image.png" alt="Product" width="50">
+           
+  <% } %>
+</td>
+        <td>
+          <a href="/products/edit/<%= prod.id %>" class="btn btn-sm btn-warning">Edit</a>
+          <a href="/products/delete/<%= prod.id %>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+<nav>
+  <ul class="pagination">
+    <% for (let i = 1; i <= totalPages; i++) { %>
+      <li class="page-item <%= i === currentPage ? 'active' : '' %>">
+        <a class="page-link" href="?page=<%= i %>"><%= i %></a>
+      </li>
+    <% } %>
+  </ul>
+</nav>

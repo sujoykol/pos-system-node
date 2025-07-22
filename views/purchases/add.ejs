@@ -1,0 +1,44 @@
+
+<form method="POST" enctype="multipart/form-data" action="/purchases/add">
+  <label>Supplier:</label>
+  <select name="supplier_id" required>
+    <% suppliers.forEach(supplier => { %>
+      <option value="<%= supplier.id %>"><%= supplier.name %></option>
+    <% }) %>
+  </select>
+
+  <label>Invoice Number:</label>
+  <input type="text" name="invoice_number" required />
+
+  <label>Invoice Image (optional):</label>
+  <input type="file" name="invoice_image" />
+
+  <hr>
+  <div id="productList">
+    <div class="product-row">
+      <select name="product_ids[]">
+        <% products.forEach(product => { %>
+          <option value="<%= product.id %>"><%= product.name %></option>
+        <% }) %>
+      </select>
+      <input type="number" name="quantities[]" placeholder="Qty" required />
+      <input type="number" name="prices[]" placeholder="Price" step="0.01" required />
+      <button type="button" onclick="removeRow(this)">X</button>
+    </div>
+  </div>
+  <button type="button" onclick="addRow()">+ Add Product</button>
+  <br><br>
+  <button type="submit">Submit Purchase</button>
+</form>
+
+<script>
+function addRow() {
+  const row = document.querySelector('.product-row').cloneNode(true);
+  document.getElementById('productList').appendChild(row);
+}
+
+function removeRow(btn) {
+  const row = btn.closest('.product-row');
+  if (document.querySelectorAll('.product-row').length > 1) row.remove();
+}
+</script>

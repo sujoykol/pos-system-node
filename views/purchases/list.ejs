@@ -1,0 +1,27 @@
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Invoice</th>
+      <th>Supplier</th>
+      <th>Date</th>
+      <th>Image</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% purchases.forEach(p => { %>
+      <tr>
+        <td><%= p.invoice_number %></td>
+        <td><%= p.supplier_name %></td>
+        <td><%= p.purchase_date.toISOString().split('T')[0] %></td>
+        <td>
+          <% if (p.invoice_image) { %>
+            <img src="/uploads/purchase_invoices/<%= p.invoice_image %>" width="80" />
+          <% } else { %>
+            No image
+          <% } %>
+        </td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>

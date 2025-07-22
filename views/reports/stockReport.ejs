@@ -1,0 +1,21 @@
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Product</th>
+      <th>Category</th>
+      <th>Stock</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% products.forEach(p => { %>
+      <tr>
+        <td><%= p.name %></td>
+        <td><%= p.category %></td>
+        <td><%= p.stock %></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+
+

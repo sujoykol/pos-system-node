@@ -1,0 +1,23 @@
+<% if (error && error.length) { %>
+  <div class="alert alert-danger"><%= error[0] %></div>
+<% } %>
+
+<form action="/customers/add" method="POST">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" name="name" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" name="email" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Phone</label>
+    <input type="text" name="phone" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Address</label>
+    <textarea name="address" class="form-control"></textarea>
+  </div>
+  <button type="submit" class="btn btn-success">Add</button>
+</form>

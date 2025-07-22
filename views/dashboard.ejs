@@ -1,0 +1,79 @@
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card border-primary shadow-sm">
+         <a href="/customers">
+        <div class="card-body text-center">
+          <h5 class="card-title text-primary">👤 Customers</h5>
+          <h2><%= stats.customers %></h2>
+        </div>
+      </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-success shadow-sm">
+        <a href="/products">
+        <div class="card-body text-center">
+          <h5 class="card-title text-success">📦 Products</h5>
+          <h2><%= stats.products %></h2>
+        </div>
+      </a>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card border-warning shadow-sm">
+        <a href="/order">
+        <div class="card-body text-center">
+          <h5 class="card-title text-warning">🧾 Orders</h5>
+          <h2><%= stats.orders %></h2>
+        </div>
+      </a>
+      </div>
+    </div>
+
+     <div class="col-md-4">
+      <div class="card border-warning shadow-sm">
+        <a href="/suppliers">
+        <div class="card-body text-center">
+          <h5 class="card-title text-warning">🧾 Suppliers</h5>
+          <h2><%= stats.suppliers %></h2>
+        </div>
+      </a>
+      </div>
+    </div>
+    <h1>Sales Graph (Last 7 Days)</h1>
+  <canvas id="salesChart" width="600" height="300"></canvas>
+
+  <script>
+    const labels = <%- labels %>;
+    const data = <%- data %>;
+
+    const ctx = document.getElementById('salesChart').getContext('2d');
+    const salesChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Sales (₹)',
+          data: data,
+          backgroundColor: 'rgba(54, 162, 235, 0.7)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1,
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+  </div>
+</div>
+
+

@@ -1,0 +1,12 @@
+<% if (error && error.length) { %>
+  <div class="alert alert-danger"><%= error[0] %></div>
+<% } %>
+
+
+<form action="/categories/add" method="POST">
+  <div class="form-group">
+    <label>Name</label>
+    <input type="text" name="name" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-success">Add</button>
+</form>
