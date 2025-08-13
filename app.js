@@ -15,14 +15,15 @@ const orderRoutes = require('./routes/orders');
 const supplierRoutes = require('./routes/supplier');
 const purchaseRoutes = require('./routes/purchaseRoutes');
 const reportRoutes = require('./routes/report');
+const settingsRoutes = require("./routes/settingsRoutes");
 
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
-
-
+const fileUpload = require("express-fileupload");
+app.use(fileUpload());
 
 app.use(session({
   secret: 'possecret',
@@ -56,6 +57,8 @@ app.use('/', orderRoutes);
 app.use('/suppliers', supplierRoutes);
 app.use('/', purchaseRoutes);
 app.use('/', reportRoutes);
+app.use("/settings", settingsRoutes);
+
 
 
 

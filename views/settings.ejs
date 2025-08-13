@@ -1,0 +1,27 @@
+<% if (error && error.length) { %>
+  <div class="alert alert-danger"><%= error[0] %></div>
+<% } %>
+<% if (success && success.length) { %>
+  <div class="alert alert-success"><%= success %></div>
+<% } %>
+<form action="/settings" method="POST" enctype="multipart/form-data">
+    <label>Site Name</label>
+    <input type="text" name="sitename" value="<%= settings.site_name %>"  class="form-control"><br>
+
+    <label>Site Email</label>
+    <input type="email" name="siteemail" value="<%= settings.site_email %>"  class="form-control"><br>
+
+    <label>Logo</label><br>
+    <% if (settings.logo) { %>
+      
+      <img src="/uploads/sitelogo/<%= settings.logo %>" alt="Logo" width="100"><br>
+    <% } else { %>
+      <img src="/uploads/logo/no-image.png" alt="Logo" width="100"><br>
+    <% } %>
+    
+    <input type="file" name="logo"class="form-control"><br><br>
+
+    <button type="submit" class="btn btn-success">Save Settings</button>
+  </form>
+
+
